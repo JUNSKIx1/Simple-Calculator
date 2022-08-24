@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        .button{
+            height: 64px;
+            width: 64px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            border-color: #242424;
+            background-color: black;
+            color: white;
+            margin-left: 3px;
+            margin-bottom: 3px;
+        }
+        body{
+            margin: 0;
+            background-color: #242424;
+        }
+        .container{
+            height: 385px;
+            width: 209px;
+            margin-top: 400px;
+            margin-left: 700px;
+        }
+        #result{
+            background-color: orange;
+            border-color: #242424;
+            margin-left: 3px;
+            margin-bottom: 3px;
+        }
+        .pmgm{
+            height: 64px;
+            width: 64px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            background-color: #141414;
+            color: white;
+            border-color: #242424;
+            margin-left: 3px;
+            margin-bottom: 3px;
+        }
+        #display{
+            background-color: #242424;
+            color: white;
+            height: 50px;
+            width: 200px;
+            text-align: right;
+            font-size: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+    </style>
+
+    <script>
+        
+        let onDisplay = [];
+        let calculates = [];
+
+        function clickValue(clicked_value){
+            onDisplay.push(clicked_value);
+            console.log(onDisplay.join(""));
+            document.getElementById("display").innerHTML = onDisplay.join("");
+            if (clickValue == "+" || clickValue == "-" || clickValue == "/" || clickValue == "x"){
+                calculates.push(clicked_value);
+                console.log(calculates);
+            }
+        }
+
+ 
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div id="display">
+            
+        </div>
+        <button class="button" value="1" onclick="clickValue(this.value)">1</button>
+        <button class="button" value="2" onclick="clickValue(this.value)">2</button>
+        <button class="button" value="3" onclick="clickValue(this.value)">3</button>
+        <button class="button" value="4" onclick="clickValue(this.value)">4</button>
+        <button class="button" value="5" onclick="clickValue(this.value)">5</button>
+        <button class="button" value="6" onclick="clickValue(this.value)">6</button>
+        <button class="button" value="7" onclick="clickValue(this.value)">7</button>
+        <button class="button" value="8" onclick="clickValue(this.value)">8</button>
+        <button class="button" value="9" onclick="clickValue(this.value)">9</button>
+        <button class="button" value="0" onclick="clickValue(this.value)">0</button>
+        <button class="pmgm" value="+" onclick="clickValue(this.value)" >+</button>
+        <button class="pmgm" value="-" onclick="clickValue(this.value)">-</button>
+        <button class="pmgm" value="/" onclick="clickValue(this.value)">÷</button>
+        <button class="pmgm" value="x" onclick="clickValue(this.value)">×</button>
+        <button class="button" id="result" >=</button>
+    </div>
+</body>
+</html>
