@@ -90,34 +90,47 @@
                 console.log(calculators);
             }
         }
+
         function calculate(){
 
-            for (i = 0; numberStacks.length > i; i++){
+            for (i = 0; numberStacks.length >= 2; i++){
                 switch (calculators[i]){
                     case "+":
-                        result = parseInt(numberStacks[i]) + parseInt(numberStacks[i + 1]);
+                        result = parseInt(numberStacks[0]) + parseInt(numberStacks[1]);
+                        numberStacks.splice(0, 2);
+                        numberStacks.unshift(result);
                         console.log(result);
+                        console.log(numberStacks.length);
+                        document.getElementById("display").innerHTML = result;
                         break;
                     case "-":
-                        result = parseInt(numberStacks[i]) - parseInt(numberStacks[i + 1]);
+                        result = parseInt(numberStacks[0]) - parseInt(numberStacks[1]);
+                        numberStacks.splice(0, 2);
+                        numberStacks.unshift(result);
                         console.log(result);
+                        console.log(numberStacks.length);
+                        document.getElementById("display").innerHTML = result;
                         break;
                     case "/":
-                        result = parseInt(numberStacks[i]) / parseInt(numberStacks[i + 1]);
+                        result = parseInt(numberStacks[0]) / parseInt(numberStacks[1]);
+                        numberStacks.splice(0, 2);
+                        numberStacks.unshift(result);
                         console.log(result);
+                        console.log(numberStacks.length);
+                        document.getElementById("display").innerHTML = result;
                         break;
                     case "x":
-                        result = parseInt(numberStacks[i]) * parseInt(numberStacks[i + 1]);
+                        result = parseInt(numberStacks[0]) * parseInt(numberStacks[1]);
+                        numberStacks.splice(0, 2);
+                        numberStacks.unshift(result);
                         console.log(result);
+                        console.log(numberStacks.length);
+                        document.getElementById("display").innerHTML = result;
                         break;
                 }
             }
-
-            
-
         }
 
- 
     </script>
 
 </head>
