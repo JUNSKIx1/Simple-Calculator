@@ -62,16 +62,59 @@
     <script>
         
         let onDisplay = [];
-        let calculates = [];
+        let numberStacks = [];
+        let calculators = [];
+        let stacknumber = 0;
+        let result = 0;
+
 
         function clickValue(clicked_value){
+            
             onDisplay.push(clicked_value);
-            console.log(onDisplay.join(""));
-            document.getElementById("display").innerHTML = onDisplay.join("");
-            if (clickValue == "+" || clickValue == "-" || clickValue == "/" || clickValue == "x"){
-                calculates.push(clicked_value);
-                console.log(calculates);
+            if (clicked_value == "1" || clicked_value == "2" || clicked_value == "3" || clicked_value == "4" || clicked_value == "5"
+                ||clicked_value == "6" || clicked_value == "7" || clicked_value == "8" || clicked_value == "9" || clicked_value == "10"
+            ){
+                if (numberStacks[stacknumber] == undefined){
+                    numberStacks[stacknumber] = clicked_value;
+                }else{
+                    numberStacks[stacknumber] = numberStacks[stacknumber] + clicked_value;
+                }
             }
+
+            console.log(numberStacks);
+            document.getElementById("display").innerHTML = onDisplay.join("");
+
+            if (clicked_value == "+" || clicked_value == "-" || clicked_value == "/" || clicked_value == "x"){
+                calculators.push(clicked_value);
+                stacknumber +=1;
+                console.log(calculators);
+            }
+        }
+        function calculate(){
+
+            for (i = 0; numberStacks.length > i; i++){
+                switch (calculators[i]){
+                    case "+":
+                        result = parseInt(numberStacks[i]) + parseInt(numberStacks[i + 1]);
+                        console.log(result);
+                        break;
+                    case "-":
+                        result = parseInt(numberStacks[i]) - parseInt(numberStacks[i + 1]);
+                        console.log(result);
+                        break;
+                    case "/":
+                        result = parseInt(numberStacks[i]) / parseInt(numberStacks[i + 1]);
+                        console.log(result);
+                        break;
+                    case "x":
+                        result = parseInt(numberStacks[i]) * parseInt(numberStacks[i + 1]);
+                        console.log(result);
+                        break;
+                }
+            }
+
+            
+
         }
 
  
@@ -97,7 +140,7 @@
         <button class="pmgm" value="-" onclick="clickValue(this.value)">-</button>
         <button class="pmgm" value="/" onclick="clickValue(this.value)">÷</button>
         <button class="pmgm" value="x" onclick="clickValue(this.value)">×</button>
-        <button class="button" id="result" >=</button>
+        <button class="button" id="result" onclick="calculate()">=</button>
     </div>
 </body>
 </html>
